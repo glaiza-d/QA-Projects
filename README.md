@@ -6,15 +6,15 @@ This project aims to validate the functionality and reliability of all API endpo
 
 ## Scope of testing
 
-Functional Testing
-Data Validation Testing
-Error Handling
-Performance Testing
+-**Functional Testing**
+-**Data Validation Testing**
+-**Error Handling**
+-**Performance Testing**
 
 ## Artifacts
 
-Test Plan
-Test Cases
-Bug Report
-Scrum Board (Jira)
+- [Test Plan](https://)
+- [Test Cases](https://)
+- [Bug Report](https://)
+- [Scrum Board (Jira)](https://miniprojects.atlassian.net/jira/software/projects/RB/boards/1)
 

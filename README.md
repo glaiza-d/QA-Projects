@@ -1,5 +1,6 @@
 # Restful Booker API
 Welcome to the Restful Booker API Testing Project!  
+
 Restful Booker API functions as a hotel booking system wherein users can create, update, delete or view booking requests.
 
 ## Overview

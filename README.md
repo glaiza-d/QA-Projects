@@ -36,6 +36,6 @@ This project aims to validate the functionality and reliability of all API endpo
 
 - [Restful Booker API Test Plan.pdf](RestfulBookerAPITestPlan.pdf)
 - [Test Cases](Sprint-1_TestCases(Jira).csv)
-- [Bug Report](https://)
+- [Bug Report](BugTickets(Jira).csv)
 - [Restful Booker Dashboard](RestfulBookerDashboard.pdf)
 

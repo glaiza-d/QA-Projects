@@ -27,11 +27,15 @@ This project aims to validate the functionality and reliability of all API endpo
 - Assess the API's response time under normal and peak loads to identify potential bottlenecks.
 - Measure the API's throughput and scalability to handle concurrent requests.
 
+###Tools Used
+TestRail
+Jira
+Postman
 
 ## Artifacts
 
-- [Test Plan](https://)
-- [Test Cases](https://)
+- [Restful Booker API Test Plan.pdf](RestfulBookerAPITestPlan.pdf)
+- [Test Cases](Sprint-1_TestCases(Jira).csv)
 - [Bug Report](https://)
-- [Scrum Board (Jira)](https://miniprojects.atlassian.net/jira/software/projects/RB/boards/1)
+- [Restful Booker Dashboard](RestfulBookerDashboard.pdf)
 

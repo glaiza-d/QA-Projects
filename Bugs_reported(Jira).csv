@@ -1,0 +1,265 @@
+Summary,Issue key,Issue id,Issue Type,Status,Project key,Project name,Project type,Project lead,Project lead id,Priority,Reporter,Reporter Id,Creator,Creator Id,Created,Updated,Last Viewed,Description,Watchers,Watchers Id,Custom field (Priority),Custom field (Severity),Parent,Parent summary,Status Category,Status Category Changed
+Invalid values for query strings return 200 OK response instead of 400 Bad Request,RB-114,10122,Bug,IN DEVELOPMENT,RB,RestBooker,software,Rod,712020:97a8a464-0a3e-4568-a1e8-61d77e51e801,Medium,Rod,712020:97a8a464-0a3e-4568-a1e8-61d77e51e801,Glaiza Dacula,712020:6d730d58-de5e-4e96-8980-1314242e35c9,2/12/2024 11:40,2/12/2024 13:27,2/12/2024 11:43,"*Environment:* 
+
+* Windows 11 Home 64 bit
+
+*Preconditions:*
+
+* Must have access to API documentation.
+* Must have valid Authentication credentials.
+* Retrieving all booking IDs is functioning correctly.
+* Retrieving subset of booking IDs using query strings is functioning correctly. (C142)
+
+*Steps to Reproduce:*
+
+# Open Postman > [Collection].
+# Import the cURL command for GetBookingIDs with Filter by name parameters.
+# Replace the values for firstname and lastname with the following invalid values:
+[firstname=null&lastname=null|https://restful-booker.herokuapp.com/booking?firstname=null&lastname=null]
+[firstname=xxxx&lastname=yyyy|https://restful-booker.herokuapp.com/booking?firstname=xxxx&lastname=yyyy]
+[firstname=0000&lastname=1111|https://restful-booker.herokuapp.com/booking?firstname=0000&lastname=1111]
+firstname=$$@0011!\!&lastname=$$@0011\!!
+# Send the GET request.
+
+*Actual Results:*
+
+* The results return a 200 OK status when entering invalid values for Filter by name query strings.
+
+*Expected Results:*
+
+* The results must return a 400 Bad Request status due to invalid values for Filter by name query strings.
+
+*Logs:*
+
+{noformat}no error logs{noformat}",Glaiza Dacula,712020:6d730d58-de5e-4e96-8980-1314242e35c9,Medium,Major,10002,Error Handling Testing,To Do,2/12/2024 11:40
+Incorrect HTTP status code returned for invalid HTTP method,RB-113,10121,Bug,IN DEVELOPMENT,RB,RestBooker,software,Rod,712020:97a8a464-0a3e-4568-a1e8-61d77e51e801,Medium,Jeffrey Salvador,712020:0be317f4-bd0c-4bde-af81-af5b391285c4,Jeffrey Salvador,712020:0be317f4-bd0c-4bde-af81-af5b391285c4,2/9/2024 11:01,2/9/2024 11:01,2/9/2024 14:10,"*Environment:*
+
+* Windows 11 Pro 64-bit
+
+ 
+
+*Preconditions:*
+
+* The User has access to API Documentation and Postman.
+* The endpoint to be tested supports multiple HTTP methods
+
+*Steps to Reproduce:*
+
+# Open the Postman App
+# Click the Import Button and Paste the Curl Command for Post requests.
+# Replace the Post request method with the Patch request method.
+# Click the Send Button
+# Check the response from the API.
+
+*Actual Results:*
+
+* The Response status code is 404 Not Found.
+
+*Expected Results:*
+
+* The response HTTP status code must be 405 Method Not Allowed.",Jeffrey Salvador,712020:0be317f4-bd0c-4bde-af81-af5b391285c4,Medium,Major,10002,Error Handling Testing,To Do,2/9/2024 11:01
+API respond with a status code of 200 (OK) despite the presence of duplicate records in create a booking,RB-112,10120,Bug,IN DEVELOPMENT,RB,RestBooker,software,Rod,712020:97a8a464-0a3e-4568-a1e8-61d77e51e801,Medium,Jeffrey Salvador,712020:0be317f4-bd0c-4bde-af81-af5b391285c4,Jeffrey Salvador,712020:0be317f4-bd0c-4bde-af81-af5b391285c4,2/7/2024 23:30,2/7/2024 23:30,2/22/2024 11:49,"*Environment:*
+
+* Windows 11 Pro 64-bit
+
+*Preconditions:*
+
+# The User has access to API Documentation and Postman.
+# Existing bookings are available in the system for testing duplication.
+
+*Steps to Reproduce:*
+
+# Open the Postman App
+# Click the Import Button and Paste the Curl Command for Get requests.
+# Replace /id with the booking ID you want to retrieve the existing data in the system, then Click the Send Button
+# Note down the details in the response body of existing bookings to use for duplication testing.
+# Click the Import Button and Paste the Curl Command for Post requests.
+# Replace in the request body the details of the existing booking you received, then Click the Send Button
+# Check the response from the API.
+
+*Actual Results:*
+
+* The Response status code is 200 OK.
+
+*Expected Results:*
+
+* The response HTTP status code must be 400 Bad Request.",Jeffrey Salvador,712020:0be317f4-bd0c-4bde-af81-af5b391285c4,High,Major,10003,Data Validation Testing,To Do,2/7/2024 23:30
+Wrong API status code response when submitting requests with missing mandatory fields.,RB-111,10119,Bug,IN DEVELOPMENT,RB,RestBooker,software,Rod,712020:97a8a464-0a3e-4568-a1e8-61d77e51e801,Medium,Jeffrey Salvador,712020:0be317f4-bd0c-4bde-af81-af5b391285c4,Jeffrey Salvador,712020:0be317f4-bd0c-4bde-af81-af5b391285c4,2/7/2024 14:39,2/7/2024 14:39,2/22/2024 11:49,"*Environment:*
+
+* Windows 11 Pro 64-bit
+
+
+
+*Preconditions:*
+
+* The User has access to API Documentation and Postman.
+
+*Steps to Reproduce:*
+
+# Open the Postman App
+# Click the Import Button and Paste the Curl Command for Post requests.
+# Configure the request to deliberately omit one or more mandatory fields from the request body.
+# Click Send Button
+# Check the response from the API.
+
+*Actual Results:*
+
+* The Response status code is 500 Internal Server Error.
+* The Response status code is 200 OK.
+
+*Expected Results:*
+
+* The response HTTP status code must be 400 Bad Request.",Jeffrey Salvador,712020:0be317f4-bd0c-4bde-af81-af5b391285c4,High,Major,10003,Data Validation Testing,To Do,2/7/2024 14:39
+Invalid date formats accepted during booking creation,RB-110,10118,Bug,IN DEVELOPMENT,RB,RestBooker,software,Rod,712020:97a8a464-0a3e-4568-a1e8-61d77e51e801,Medium,Glaiza Dacula,712020:6d730d58-de5e-4e96-8980-1314242e35c9,Glaiza Dacula,712020:6d730d58-de5e-4e96-8980-1314242e35c9,2/7/2024 14:32,2/7/2024 18:01,2/7/2024 18:01,"*Environment:*
+
+Windows 11 Home 64-bit
+
+*Preconditions:*
+
+Must have access to API documentation.
+
+Must have valid Authentication credentials.
+
+*Steps to Reproduce:*
+
+Step 1 Open Postman > [Collection].
+
+Step 2 Import the cURL command for CreateBooking request.
+
+Step 3 Go to the Body tab, and then select raw.
+Step 4 Replace the values for checkin and checkout fields with invalid date formats.
+
+MM-DD-CCYY (02-07-2024)
+DD-MM-CCYY (07-02-2024)
+
+string (abcd)
+numeric (1234)
+null/empty
+
+Step 5 Send POST request.
+
+*Actual Results:*
+
+Bookings with invalid date formats are created and the response is 200 OK.
+
+*Expected Results:*
+
+The booking is not created and results must return a 400 Bad Request status due to invalid date format.
+
+*Logs:*",Glaiza Dacula,712020:6d730d58-de5e-4e96-8980-1314242e35c9,Medium,Major,10003,Data Validation Testing,To Do,2/7/2024 14:32
+ID's not returned when GETBookingsId Filtered by checkin/checkoutdate,RB-106,10114,Bug,IN DEVELOPMENT,RB,RestBooker,software,Rod,712020:97a8a464-0a3e-4568-a1e8-61d77e51e801,Medium,Aris Asuncion,712020:5f7553af-afcc-41dd-b114-feb91abd131a,Aris Asuncion,712020:5f7553af-afcc-41dd-b114-feb91abd131a,2/5/2024 22:14,2/5/2024 22:20,2/7/2024 14:39,"*Environment:* 
+
+Windows 11
+
+*Preconditions:*
+
+Must have access to API documentation.
+Must have valid Authentication credentials.
+Must have existing booking ID.
+
+*Steps to Reproduce:*
+
+Step 1 Open Postman > [Collection].
+
+Step 2 Using the GET method, copy/paste this into the url field: [{color:#ffffff}https://restful-booker.herokuapp.com/booking/{color}|https://restful-booker.herokuapp.com/booking/]
+
+Step 3 Take note of any of the id’s and do a query by adding the id of your choice as the endpoint in Step 2.
+
+Step 4 Take note of the checkin and checkout dates for your reference
+
+Step 5 Import the cURL command for URLencoded example in Booking - GetBookingIds ([https://restful-booker.herokuapp.com/apidoc/index.html#api-Booking-GetBookings|https://restful-booker.herokuapp.com/apidoc/index.html#api-Booking-GetBookings|smart-link] ) from the API documentation. 
+
+Step 6 Replace the checkin/checkoutdates with existing records you’ve taken note of in Step 4 .
+
+*Actual Results:*
+
+The results return 200 status but booking details are not displayed. 
+
+*Expected Results:*
+
+The results must return a 200 OK status and must return the id of existing record that was queried
+
+*Logs: []*",Aris Asuncion,712020:5f7553af-afcc-41dd-b114-feb91abd131a,Medium,Major,10003,Data Validation Testing,To Do,2/5/2024 22:14
+URLencoded cURL command for PartialUpdate API not working properly,RB-105,10113,Bug,IN DEVELOPMENT,RB,RestBooker,software,Rod,712020:97a8a464-0a3e-4568-a1e8-61d77e51e801,Medium,Glaiza Dacula,712020:6d730d58-de5e-4e96-8980-1314242e35c9,Glaiza Dacula,712020:6d730d58-de5e-4e96-8980-1314242e35c9,2/5/2024 19:17,2/7/2024 10:36,2/7/2024 17:59,"*Environment:* 
+
+Windows 11
+
+*Preconditions:*
+
+Must have access to API documentation.
+Must have valid Authentication credentials.
+Must have existing booking ID.
+
+*Steps to Reproduce:*
+
+Step 1 Open Postman > [Collection].
+
+Step 2 Import the cURL command for URLencoded example in PartialUpdateBooking from the API documentation. [https://restful-booker.herokuapp.com/apidoc/index.html#api-Booking-PartialUpdateBooking|https://restful-booker.herokuapp.com/apidoc/index.html#api-Booking-PartialUpdateBooking]
+
+Step 3 Replace the booking ID with existing booking ID.
+
+Step 4 Send PATCH request.
+
+*Actual Results:*
+
+The results return a 200 OK status but a message that says “formurlencoded is not a function” is displayed. The updated booking details show when you query the booking ID.
+
+*Expected Results:*
+
+The results must return a 200 OK status and updated booking details are displayed.
+
+*Logs:*
+
+[^response]
+
+ 
+formurlencoded is not a function",Glaiza Dacula,712020:6d730d58-de5e-4e96-8980-1314242e35c9,Low,Minor,10000,Functional Testing,To Do,2/5/2024 19:17
+Invalid API's response when creating a booking with missing or invalid data in the request body.,RB-99,10107,Bug,IN DEVELOPMENT,RB,RestBooker,software,Rod,712020:97a8a464-0a3e-4568-a1e8-61d77e51e801,Medium,Jeffrey Salvador,712020:0be317f4-bd0c-4bde-af81-af5b391285c4,Jeffrey Salvador,712020:0be317f4-bd0c-4bde-af81-af5b391285c4,2/5/2024 16:22,2/7/2024 14:40,2/7/2024 14:23,"*Environment:*
+
+* Windows 11 Pro 64-bit
+
+
+*Preconditions:*
+
+* The User has access to API Documentation and Postman.
+
+*Steps to Reproduce:*
+
+# Open the Postman App
+# Click the Import Button and Paste the Curl Command for Post requests.
+# Provide missing or invalid booking details in the request body (eg., missing 'firstname', 'lastname', 'bookingdates')
+# Click the Send Button
+# Check the response from the API.
+
+*Actual Results:*
+
+* The Response status code is 200 OK.
+
+*Expected Results:*
+
+* The Response status code must be 400 Bad Request.",Jeffrey Salvador,712020:0be317f4-bd0c-4bde-af81-af5b391285c4,High,Major,10000,Functional Testing,To Do,2/5/2024 16:22
+summary of bug,RB-93,10101,Bug,IN DEVELOPMENT,RB,RestBooker,software,Rod,712020:97a8a464-0a3e-4568-a1e8-61d77e51e801,Medium,Rod,712020:97a8a464-0a3e-4568-a1e8-61d77e51e801,Rod,712020:97a8a464-0a3e-4568-a1e8-61d77e51e801,2/5/2024 14:17,2/12/2024 11:40,2/12/2024 11:42,"*Environment:* 
+
+* Windows | Chrome Version 121.0.6167.140
+
+*Preconditions:*
+
+* Sample Precondition
+
+*Steps to Reproduce:*
+
+# Step 1
+# Step 2
+# Step 3
+
+*Actual Results:*
+
+* Actual result
+
+*Expected Results:*
+
+* Expected result
+
+*Logs:*
+
+{noformat}Sample error logs if there's any. {noformat}",Rod,712020:97a8a464-0a3e-4568-a1e8-61d77e51e801,Medium,Major,10000,Functional Testing,To Do,2/5/2024 14:17

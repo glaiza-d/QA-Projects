@@ -27,7 +27,7 @@ This project aims to validate the functionality and reliability of all API endpo
 - Assess the API's response time under normal and peak loads to identify potential bottlenecks.
 - Measure the API's throughput and scalability to handle concurrent requests.
 
-###Tools Used
+### Tools Used
 TestRail
 Jira
 Postman

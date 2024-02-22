@@ -28,9 +28,9 @@ This project aims to validate the functionality and reliability of all API endpo
 - Measure the API's throughput and scalability to handle concurrent requests.
 
 ### Tools Used
-TestRail
-Jira
-Postman
+- [TestRail] (https://www.testrail.com/)
+- [Jira] (https://www.atlassian.com/software/jira)
+- [Postman] (https://www.postman.com/)
 
 ## Artifacts
 
